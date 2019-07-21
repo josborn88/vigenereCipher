@@ -8,39 +8,41 @@ alphabet_pos = {'A':0, 'a':0, 'B':1, 'b':1, 'C':2, 'c':2, 'D':3, 'd':3,
 
 
 def encrypt(plain, shift):
-	cipherText = ''
-	for i in range(0, len(plain)):
-		letterChange = ord(plain[i]) + alphabet_pos.get(shift[i])
-		if letterChange > ord('Z'):
-			letterChange -= 26
-		letter = chr(letterChange)
-		cipherText += letter
+    cipherText = ''
+    for i in range(0, len(plain)):
+        letterChange = ord(plain[i]) + alphabet_pos.get(shift[i])
+        if letterChange > ord('Z'):
+            letterChange -= 26
+        letter = chr(letterChange)
+        cipherText += letter
 
-	return(cipherText)
+    return(cipherText)
 
 def decrypt(cipher, shift):
-	plaintext = ''
-	for i in range(0, len(cipher)):
-		letterChange = ord(cipher[i]) - alphabet_pos.get(shift[i])
-		if letterChange < ord('A'):
-			letterChange += 26
-		letter = chr(letterChange)
-		plaintext += letter
-	return(plaintext)
+    plaintext = ''
+    for i in range(0, len(cipher)):
+        letterChange = ord(cipher[i]) - alphabet_pos.get(shift[i])
+        if letterChange < ord('A'):
+            letterChange += 26
+        letter = chr(letterChange)
+        plaintext += letter
+    return(plaintext)
 
 #The while loop is used so that it is easy to encrypt and decrypt multiple messages 
 #without having to run the program multiple times
 while True:
-        message = input('What is your message?').replace(' ', '').upper()
+    message = input('What is your message?').replace(' ', '').upper()
 
-        keys = input('what is your cipher key?').upper()
-        while len(keys) < len(message):
-			if len(key) < len(message):
-				key += key
-        operate = input('encrypt or decrypt?')
-        if operate.lower() == 'e' or operate.lower() == 'encrypt':
-                print(encrypt(message, keys))
+    key = input('what is your cipher key?').upper()
 
-        elif operate.lower() == 'd' or operate.lower() == 'decrypt':
-                print(decrypt(message, keys))
+    while len(key) < len(message):
+                if len(key) < len(message):
+                        key += key
+
+    operate = input('encrypt or decrypt?')
+    if operate.lower() == 'e' or operate.lower() == 'encrypt':
+        print(encrypt(message, key))
+
+    elif operate.lower() == 'd' or operate.lower() == 'decrypt':
+        print(decrypt(message, key))
 
