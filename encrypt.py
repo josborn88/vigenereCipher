@@ -1,3 +1,4 @@
+#this dictionary is used to get the amount of shift needed for the cipher to work
 alphabet_pos = {'A':0, 'a':0, 'B':1, 'b':1, 'C':2, 'c':2, 'D':3, 'd':3,
 'E':4, 'e':4, 'F':5, 'f':5, 'G':6, 'g':6, 'H':7, 'h':7, 'I':8, 'i':8,
 'J':9, 'j':9, 'K':10, 'k':10, 'L':11, 'l':11, 'M':12, 'm':12, 'N': 13,
@@ -26,20 +27,20 @@ def decrypt(cipher, shift):
 		letter = chr(letterChange)
 		plaintext += letter
 	return(plaintext)
+
+#The while loop is used so that it is easy to encrypt and decrypt multiple messages 
+#without having to run the program multiple times
 while True:
-        message = input('What is your message?')
-        toEncrypt = message.replace(' ', '').upper()
+        message = input('What is your message?').replace(' ', '').upper()
 
         keys = input('what is your cipher key?').upper()
-
+        while len(keys) < len(message):
+			if len(key) < len(message):
+				key += key
         operate = input('encrypt or decrypt?')
         if operate.lower() == 'e' or operate.lower() == 'encrypt':
-                print(encrypt(toEncrypt, keys))
+                print(encrypt(message, keys))
 
         elif operate.lower() == 'd' or operate.lower() == 'decrypt':
-                print(decrypt(toEncrypt, keys))
-
- 
-#print(encrypt(toEncrypt, keys))
-#print(decrypt((encrypt(toEncrypt, keys)),keys))
+                print(decrypt(message, keys))
 
